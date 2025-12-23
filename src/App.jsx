@@ -1,4 +1,3 @@
-// duration 1-qavat bolsa 2 , 2 bolsa 4, 3-6, 4-8 
 import { useState } from "react";
 
 export default function App() {
@@ -20,16 +19,18 @@ export default function App() {
     processFloor(floor);
   }
   
+  let time = 3;
+
+
   function processFloor(floor) {
     setIsMoving(true);
     setCurrentFloor(floor);
-    
     setTimeout(() => {
       setIsMoving(false);
       if (queue.length > 0) {
         const nextFloor = queue[0];
         setQueue(prev => prev.slice(1));
-        setTimeout(() => processFloor(nextFloor), 100);
+        setTimeout(() => processFloor(nextFloor), 1000);
       }
     }, 1000);
   }
@@ -49,7 +50,7 @@ export default function App() {
           </div>
 
           <div className="bg-yellow-400 md:w-50 sm:w-22 flex items-end justify-center p-3" >
-            <div style={{transform: `translateY(-${(currentFloor - 1) * 100}px)`, transition: 'transform 1s ease-in-out'}} className="bg-fuchsia-600 w-20 h-20 p-7">Lift</div>
+            <div style={{transform: `translateY(-${(currentFloor - 1) * 105}px)`, transition: `transform ${time}s ease-in-out`}} className="bg-fuchsia-600 w-20 h-20 p-7">Lift</div>
           </div>
         </div>
 
